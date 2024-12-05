@@ -1,0 +1,96 @@
+version = 1
+
+[[analyzers]]
+name = "python"
+
+  [analyzers.meta]
+  runtime_version = "3.x.x"
+
+[[analyzers]]
+name = "docker"
+
+[[analyzers]]
+name = "csharp"
+
+[[analyzers]]
+name = "cxx"
+
+[[analyzers]]
+name = "java"
+
+  [analyzers.meta]
+  runtime_version = "21"
+
+[[analyzers]]
+name = "go"
+
+  [analyzers.meta]
+  import_root = "github.com/OneFineStarstuff/OneFineStarstuff"
+  dependencies_vendored = true
+
+[[analyzers]]
+name = "kotlin"
+
+  [analyzers.meta]
+  runtime_version = "19"
+  language_version = "1.9"
+
+[[analyzers]]
+name = "php"
+
+[[analyzers]]
+name = "ruby"
+
+[[analyzers]]
+name = "rust"
+
+  [analyzers.meta]
+  msrv = "stable"
+
+[[analyzers]]
+name = "scala"
+
+[[analyzers]]
+name = "secrets"
+
+[[analyzers]]
+name = "shell"
+
+[[analyzers]]
+name = "terraform"
+
+[[analyzers]]
+name = "swift"
+
+[[analyzers]]
+name = "sql"
+
+[[analyzers]]
+name = "test-coverage"
+
+[[analyzers]]
+name = "javascript"
+
+  [analyzers.meta]
+  plugins = [
+    "react",
+    "vue",
+    "ember",
+    "meteor",
+    "angularjs",
+    "angular"
+  ]
+  environment = [
+    "nodejs",
+    "browser",
+    "jest",
+    "mocha",
+    "jasmine",
+    "jquery",
+    "mongo",
+    "cypress",
+    "vitest"
+  ]
+
+[[analyzers]]
+name = "ansible"
