@@ -1,0 +1,37 @@
+model:
+  name: UnifiedAGISystem
+  parameters:
+    text_dim: 256
+    image_dim: 224
+    sensor_dim: 10
+    hidden_dim: 512
+    memory_size: 1280
+    output_dim: 10
+
+training:
+  epochs: 10
+  batch_size: 32
+  learning_rate: 1e-4
+  optimizer: AdamW
+  scheduler:
+    type: OneCycleLR
+    max_lr: 1e-3
+  loss_function: CrossEntropyLoss
+
+data:
+  dataset:
+    type: CustomDataset
+    synthetic_data:
+      text_data: 
+        - Sample text 1
+        - Sample text 2
+      image_data: 
+        - random_tensor_shape: [3, 224, 224]
+      sensor_data:
+        - random_tensor_shape: [10]
+      targets:
+        - range: [0, 9]
+
+distributed_training:
+  world_size: 
+    - torch.cuda.device_count()
