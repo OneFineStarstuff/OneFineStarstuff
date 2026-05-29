@@ -1,0 +1,6 @@
+bundles:
+  - general
+report:
+  pullRequest:
+    findings: "onChangedLinesOnly"
+    comment: 1
