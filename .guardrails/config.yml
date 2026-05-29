@@ -1,5 +1,6 @@
-bundles: "auto"
+bundles:
+  - general
 report:
   pullRequest:
     findings: "onChangedLinesOnly"
-    comment: true
+    comment: 1

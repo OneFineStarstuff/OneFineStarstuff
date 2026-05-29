@@ -1,5 +1,4 @@
-**/*.ipynb
-.git/**
-node_modules/**
-build/**
-dist/**
+**/*
+!EAIP_Technical_Specification.xml
+!EAIP_Technical_Specification.xsd
+!.guardrails/**/*
