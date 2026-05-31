@@ -7,7 +7,7 @@ routines:
   - Add unambiguous missing labels or post one compact repair proposal when labels conflict.
 deny:
   - Do not apply deprecated labels.
-  - Do not remove or replace existing labels unless the taxonomy explicitly allows that exact repair.
+  - Do not remove labels automatically.
   - Do not change issue status, priority, assignee, project, cycle, estimate, due date, or body.
   - Do not guess between two plausible labels in the same required label family.
   - Do not repeat the same repair proposal for an unchanged conflict.
@@ -34,12 +34,23 @@ Do not scan the entire workspace unless the daemon file is intentionally updated
 
 ## Decision policy
 
-Add a missing label when:
+Add a missing label only when:
 
-- the label family is required by the taxonomy
+- the label is in the allowed auto-add set: `bug`, `enhancement`, `documentation`, `question`, `🚦 awaiting triage`
 - exactly one label in that family is supported by issue evidence
 - the label is current, not deprecated
 - applying it does not conflict with existing labels
+
+Never auto-add these labels:
+
+- `duplicate`
+- `invalid`
+- `wontfix`
+- `help wanted`
+- `good first issue`
+- `🛠 WIP`
+- `🤖 bot`
+- `size/*`
 
 Post a repair proposal instead of mutating when:
 
@@ -47,6 +58,7 @@ Post a repair proposal instead of mutating when:
 - an issue has deprecated labels
 - existing labels conflict with the taxonomy
 - the issue body or title does not provide enough context
+- the needed action would require label removals or replacements
 
 ## Repair proposal format
 
@@ -72,6 +84,10 @@ Blocked because: <specific uncertainty or conflict>
 Never add duplicate labels. Re-running with unchanged issue data must produce no additional writes.
 
 Use a conflict signature based on issue ID, current label set, title/body hash, and taxonomy version. Do not repeat the same repair proposal while that signature is unchanged.
+
+## Removal policy
+
+No automatic removals. Repairs that require removals or replacements are proposal-only.
 
 ## No-op when
 

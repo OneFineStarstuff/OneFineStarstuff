@@ -1,41 +1,51 @@
-# Label taxonomy template
+# OneFineStarstuff label taxonomy
 
-Replace this file with the team's actual Linear label taxonomy.
+Taxonomy version: `onefinestarstuff-2026-05-31`
 
 ## Required label families
 
-Example required families:
+Type (required, choose one):
 
-- `type/*`: what kind of work this is
-- `area/*`: product or system area
-- `source/*`: where the work originated
+- `bug`
+- `enhancement`
+- `documentation`
+- `question`
 
-## Example labels
+Size (required when triaged, not auto-added):
 
-Types:
+- `size/XS`
+- `size/M`
+- `size/L`
 
-- `type/bug`
-- `type/feature`
-- `type/improvement`
-- `type/research`
+## Optional workflow/source labels
 
-Areas:
+- `🚦 awaiting triage`
+- `🛠 WIP`
+- `🤖 bot`
 
-- `area/frontend`
-- `area/backend`
-- `area/platform`
-- `area/docs`
+## Auto-add policy (conservative)
 
-Sources:
+Allowed auto-add labels:
 
-- `source/customer`
-- `source/team-request`
-- `source/monitoring`
+- `bug`
+- `enhancement`
+- `documentation`
+- `question`
+- `🚦 awaiting triage`
 
-## Deprecated labels
+Never auto-add:
 
-List labels the daemon must never apply.
+- `duplicate`
+- `invalid`
+- `wontfix`
+- `help wanted`
+- `good first issue`
+- `🛠 WIP`
+- `🤖 bot`
+- `size/*`
 
-```text
-deprecated/example
-```
+## Repair policy
+
+No automatic removals.
+
+When labels conflict, are missing outside the allowed auto-add set, or require removals/replacements, post a concise proposal-only repair comment.

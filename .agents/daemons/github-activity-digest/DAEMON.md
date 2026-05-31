@@ -20,7 +20,7 @@ schedule: "0 15 * * 1-5"
 
 Use this repository-specific value:
 
-- Slack channel: `<slack_channel_name>`
+- Slack channel: `#repo-alerts`
 
 ## Scope
 
@@ -57,6 +57,14 @@ If fewer than two meaningful items exist, do not post unless the single item is 
 If no item meets the signal threshold, no-op silently.
 
 No-op silently when there has been no repository activity since the previous scheduled run.
+
+## Idempotency and duplicate detection
+
+Use digest key format: `github-digest:OneFineStarstuff:YYYY-MM-DD` (UTC date).
+
+Before posting, scan `#repo-alerts` for the same digest key/header for the current UTC date. If found, no-op.
+
+Keep exactly one digest post per UTC date.
 
 ## Output format
 

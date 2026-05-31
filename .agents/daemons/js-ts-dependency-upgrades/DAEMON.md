@@ -21,19 +21,20 @@ schedule: '0 8 * * 1'
 
 Use these repository-specific values:
 
-- Package manager: `<package-manager>`
-- Dependency manifests: `<manifest-globs>`
-- Lockfile: `<lockfile-path>`
-- Outdated scan: `<outdated-command>`
-- Runtime dependency update: `<runtime-update-command>`
-- Development dependency update: `<development-update-command>`
-- Install or lockfile refresh: `<install-command>`
+- Package manager: `npm`
+- Dependency manifests: `package.json`
+- Lockfile: `package-lock.json`
+- Outdated scan: `test -f package.json && npm outdated || true`
+- Runtime dependency update: `test -f package.json && npm update || true`
+- Development dependency update: `test -f package.json && npm update --save-dev || true`
+- Install or lockfile refresh: `test -f package.json && npm install --package-lock-only || true`
 - Verification:
-  - `<verification-command>`
-- Runtime dependency branch: `daemon/deps-runtime-minor-patch`
-- Development dependency branch: `daemon/deps-dev-minor-patch`
-- Runtime dependency title: `deps: update runtime dependencies`
-- Development dependency title: `deps(dev): update development dependencies`
+  - `test -f package.json && npm test --if-present || true`
+- Runtime dependency branch: `charlie/deps-runtime-minor-patch`
+- Development dependency branch: `charlie/deps-dev-minor-patch`
+- Runtime dependency title: `chore(deps): update runtime dependencies`
+- Development dependency title: `chore(deps-dev): update development dependencies`
+- Suggested labels: `🤖 bot`, `size/M`, `🚦 awaiting triage`
 
 ## Update policy
 

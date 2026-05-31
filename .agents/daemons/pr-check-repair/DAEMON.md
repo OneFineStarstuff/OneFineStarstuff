@@ -33,6 +33,10 @@ Expect parallel `pr-check-repair` activations for other failing checks. When ove
 
 Fix and push when the triggering check is current, the cause is clear from available evidence, the fix does not require a product/security/infrastructure/dependency/data judgment call, and the commit can be pushed without overwriting concurrent work.
 
+External integration or tooling failures outside the repository (for example: Debricked outages, Codacy SaaS-side failures, guardrails provider incidents) must be treated as stop/no-op with a concise comment that names the failing integration and the human action needed.
+
+Keep fix-and-push behavior for clearly repo-owned CI configuration failures (for example workflow syntax, script wiring, or repository-hosted config drift introduced by the PR).
+
 Stop/no-op and comment with the blocking reason when the fix requires human judgment, external environment/config/secrets changes, dependency substitution or security review, production data/backfill decisions, or unavailable permissions/tooling.
 
 ## Repair categories
@@ -42,7 +46,7 @@ Stop/no-op and comment with the blocking reason when the fix requires human judg
 | Formatting, lint, typecheck, snapshots, generated fixtures, and lockfile drift                          | Fix and push.                                                                                      |
 | Failing unit/integration tests where PR intent or documented behavior makes the expected behavior clear | Fix implementation or update tests, then push.                                                     |
 | E2E failures with clear evidence from traces, logs, repo behavior, or changed stable selectors          | Fix app code or tests, then push.                                                                  |
-| CI/workflow syntax errors introduced by the PR                                                          | Fix and push.                                                                                      |
+| CI/workflow syntax errors or clearly repo-owned CI config failures introduced by the PR                 | Fix and push.                                                                                      |
 | Simple generated/schema migrations needed by a clear schema/model change                                | Generate or add them and push when the devbox has the required tooling and permissions.            |
 | Flaky checks with strong flake evidence                                                                 | Rerun once when no repo change is needed, or push the narrowest stabilizing fix when one is clear. |
 | Ambiguous product intent, conflicting requirements, or unclear PR direction                             | Stop/no-op; comment if human action is needed.                                                     |
