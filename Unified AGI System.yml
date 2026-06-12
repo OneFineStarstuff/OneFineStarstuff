@@ -8,6 +8,16 @@ model:
     memory_size: 1280
     output_dim: 10
 
+compliance:
+  mas_feat:
+    enabled: true
+    fairness_proof: ZK-DemographicParity
+    threshold: 0.05
+  hkma_ethics:
+    enabled: true
+    interpretability_layer: ASA-CAE
+    context_bounds: 0.05
+
 training:
   epochs: 10
   batch_size: 32
