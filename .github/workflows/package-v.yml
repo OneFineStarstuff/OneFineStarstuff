@@ -13,8 +13,8 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - uses: actions/setup-node@64ed1c7eab4cce33da2909896611359c31e4e6c2 # v3.8.1
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
